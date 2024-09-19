@@ -2,9 +2,16 @@ import axios from "axios";
 
 import { Match } from "../interfaces/matches";
 
+interface MatchesResponse {
+    count: number;
+    matches: Match[];
+  }
+
 const API_URL = 'http://localhost:8080'
 
-export const getMatches = () => axios.get<Match[]>(`${API_URL}/matches`);
+export const getMatches = () => {
+    return axios.get<MatchesResponse>(`${API_URL}/matches`).then(response => response.data);
+};
 
 export const getMatchesByID = (id:number) => axios.get<Match>(`${API_URL}/matches/${id}`);
 

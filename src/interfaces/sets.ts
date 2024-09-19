@@ -1,7 +1,7 @@
 export interface Set {
-    ID: number,
-    MatchID: number,
-    ScoreTeamA: number,
-    ScoreTeamB: number,
-    Win: boolean
+    id: number,
+    matchId: number,
+    scoreTeamA: number,
+    scoreTeamB: number,
+    win: boolean
 }

@@ -1,4 +1,3 @@
-// src/components/MatchList.tsx
 import { useEffect, useState } from 'react';
 import { Match } from '../../interfaces/matches';
 import { getMatches } from '../../api/matches';
@@ -17,7 +16,8 @@ const MatchList = ({ onSelectMatch }: MatchListProps) => {
       setLoading(true);
       try {
         const response = await getMatches();
-        setMatches(response?.data ?? []);
+        console.log(response.matches)
+        setMatches(response?.matches ?? []);
       } catch (err) {
         setError('There was an error fetching the matches');
         console.error(err);
@@ -42,8 +42,8 @@ const MatchList = ({ onSelectMatch }: MatchListProps) => {
       <h2>Matches</h2>
       <ul>
         {matches.map(match => (
-          <li key={match.ID} onClick={() => onSelectMatch(match.ID)}>
-            {match.Adversary} {new Date(match.MatchDate).toLocaleDateString()}
+          <li key={match.id} onClick={() => onSelectMatch(match.id)}>
+            {match.adversary} {new Date(match.matchDate).toLocaleDateString()}
           </li>
         ))}
       </ul>

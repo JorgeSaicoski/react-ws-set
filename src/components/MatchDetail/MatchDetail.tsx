@@ -38,16 +38,16 @@ const MatchDetail = ({ matchID }: MatchDetailProps) => {
     return (
       <div>
         <h3>Match Details</h3>
-        <p><strong>Adversary:</strong> {match.Adversary}</p>
-        <p><strong>Date:</strong> {new Date(match.MatchDate).toLocaleDateString()}</p>
-        <p><strong>Status:</strong> {match.IsLive ? 'Live' : 'Finished'}</p>
-        <p><strong>Result:</strong> {match.Win ? 'Won' : 'Lost'}</p>
+        <p><strong>Adversary:</strong> {match.adversary}</p>
+        <p><strong>Date:</strong> {new Date(match.matchDate).toLocaleDateString()}</p>
+        <p><strong>Status:</strong> {match.isLive ? 'Live' : 'Finished'}</p>
+        <p><strong>Result:</strong> {match.win ? 'Won' : 'Lost'}</p>
   
         <h4>Set Details</h4>
         <ul>
-          {match.Sets.map((set) => (
-            <li key={set.ID}>
-              Set {set.ID}: {set.ScoreTeamA} - {set.ScoreTeamB} {set.Win ? '(Win)' : ''}
+          {match.sets.map((set) => (
+            <li key={set.id}>
+              Set {set.id}: {set.scoreTeamA} - {set.scoreTeamB} {set.win ? '(Win)' : ''}
             </li>
           ))}
         </ul>

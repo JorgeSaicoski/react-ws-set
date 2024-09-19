@@ -1,10 +1,10 @@
 import { Set } from "./sets";
 
 export interface Match {
-    ID: number,
-    Sets: Set[],
-    IsLive:boolean,
-    Win:boolean,
-    MatchDate: Date | string
-    Adversary: string
+    id: number,
+    sets: Set[],
+    isLive:boolean,
+    win:boolean,
+    matchDate: Date | string
+    adversary: string
 }
