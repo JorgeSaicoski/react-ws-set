@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import MatchList from './components/MatchList/MatchList';
+import MatchDetail from './components/MatchDetail/MatchDetail';
 
-function App() {
+const App = () => {
+  const [selectedMatchId, setSelectedMatchId] = useState<number | null>(null);
+
+  const handleSelectMatch = (id: number) => {
+    setSelectedMatchId(id || null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Match Viewer</h1>
+      <MatchList onSelectMatch={handleSelectMatch} />
+      <MatchDetail matchID={selectedMatchId} />
     </div>
   );
-}
+};
 
 export default App;
