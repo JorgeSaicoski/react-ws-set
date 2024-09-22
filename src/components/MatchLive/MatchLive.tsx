@@ -16,7 +16,7 @@ const MatchLive = () => {
             } 
         }
         fetchMatchLive()
-    })
+    }, [])
     return(
         match? 
         <h1>{match.adversary}</h1>

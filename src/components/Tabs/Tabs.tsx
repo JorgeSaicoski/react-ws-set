@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MatchList from "../MatchList/MatchList";
 import MatchDetail from "../MatchDetail/MatchDetail";
+import MatchLive from "../MatchLive/MatchLive";
 
 const Tabs = () => {
     const [activeTabIndex, setActiveTabIndex] = useState(0)
@@ -26,7 +27,7 @@ const Tabs = () => {
                 Live
                 </button>
                 <div className={`tab-content ${direction}`}>
-                    Live will be here
+                    <MatchLive/>
                 </div>
             </div>
             <div className="tab-titles">
