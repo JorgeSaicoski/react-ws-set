@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getMatchLive } from "../../api/matches"
 import { Match } from "../../interfaces/matches";
+import MatchLiveDetail from "./MatchLiveDetail/MatchLiveDetail";
 
 const MatchLive = () => {
     const [match, setMatch] = useState<Match | null>(null)
@@ -19,7 +20,7 @@ const MatchLive = () => {
     }, [])
     return(
         match? 
-        <h1>{match.adversary}</h1>
+        <MatchLiveDetail/>
         :error?
         <p>{error}</p>:
         <p>No match found</p>
