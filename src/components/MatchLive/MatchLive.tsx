@@ -20,7 +20,7 @@ const MatchLive = () => {
     }, [])
     return(
         match? 
-        <MatchLiveDetail/>
+        <MatchLiveDetail match={match}/>
         :error?
         <p>{error}</p>:
         <p>No match found</p>
