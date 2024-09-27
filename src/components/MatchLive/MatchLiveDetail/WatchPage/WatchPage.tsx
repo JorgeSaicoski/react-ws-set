@@ -22,6 +22,8 @@ const WatchPage = ({ matchID }: { matchID: number}) => {
 
     socketRef.current.onmessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
+      console.log(event)
+      console.log(data)
 
       if (data.team_a_score !== undefined && data.team_b_score !== undefined) {
         setScore({
