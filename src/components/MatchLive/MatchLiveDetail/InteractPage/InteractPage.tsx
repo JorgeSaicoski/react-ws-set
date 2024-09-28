@@ -1,3 +1,4 @@
+import { Badge, Box, Button, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 
 
@@ -50,20 +51,35 @@ const InteractPage = ({ matchID }: { matchID: number}) => {
         );
     }
     };
+    const bg = useColorModeValue("teal.100", "gray.100");
 
     return (
-    <div>
-        <h3>Interacting with Match {matchID}</h3>
-        {
-            connected?<p>Connected</p>:<p>Not Connected</p>
-        }
-        <p>Team A Score: {score.team_a_score}</p>
-        <p>Team B Score: {score.team_b_score}</p>
-        <button onClick={() => sendMessage("add", "A")}>Add Point to Team A</button>
-        <button onClick={() => sendMessage("remove", "A")}>Remove Point from Team A</button>
-        <button onClick={() => sendMessage("add", "B")}>Add Point to Team B</button>
-        <button onClick={() => sendMessage("remove", "B")}>Remove Point from Team B</button>
-    </div>
+        <Box p={5} maxW="500px" mx="auto" textAlign="center" borderWidth="1px" borderRadius="lg" boxShadow="md" bg={bg}>
+            <Heading as="h3" size="lg" mb={4}>
+                Interacting with Match {matchID}
+            </Heading>
+            <Badge mb={4} colorScheme={connected ? "green" : "red"}>
+                {connected ? "Connected" : "Not Connected"}
+            </Badge>
+            <Stack direction="column" justify="space-around" mb={4}>
+                <Box>
+                    <Text fontSize="xl" fontWeight="bold">Team A Score</Text>
+                    <Stack direction="row" justify="center" mb={4}>
+                        <Button colorScheme="red" onClick={() => sendMessage("remove", "A")}>-</Button>                 
+                        <Text fontSize="2xl" color="teal.500">{score.team_a_score}</Text>        
+                        <Button colorScheme="teal" onClick={() => sendMessage("add", "A")}>+</Button>
+                    </Stack>
+                </Box>
+                <Box>
+                    <Text fontSize="xl" fontWeight="bold">Team B Score</Text>
+                    <Stack direction="row" justify="center" mb={4}>
+                        <Button colorScheme="red" onClick={() => sendMessage("remove", "B")}>-</Button>                 
+                        <Text fontSize="2xl" color="teal.500">{score.team_b_score}</Text>        
+                        <Button colorScheme="teal" onClick={() => sendMessage("add", "B")}>+</Button>
+                    </Stack>
+                </Box>
+            </Stack>
+        </Box>
     );
 };
 
